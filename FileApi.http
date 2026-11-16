@@ -17,3 +17,14 @@ GET {{FileApi_HostAddress}}/files/1
 
 ### Get one that doesn't exist
 GET {{FileApi_HostAddress}}/files/99
+
+### Update
+PUT {{FileApi_HostAddress}}/files/1
+Content-Type: application/json
+
+{
+  "name": "renamed.txt"
+}
+
+### Delete
+DELETE {{FileApi_HostAddress}}/files/1

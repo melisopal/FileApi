@@ -75,6 +75,7 @@ public class FilesController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    // IActionResult is a generic response type that can return different HTTP status codes.
     public IActionResult Update(int id, FileRecord input)
     {
         var record = _files.FirstOrDefault(f => f.Id == id);
@@ -84,6 +85,8 @@ public class FilesController : ControllerBase
             return NotFound();
         }
 
+        // Update the record's name with the new value from input.
+        // The only thing we can do, since id and date aren't things users should be able to change.
         record.Name = input.Name;
         return NoContent();
     }
@@ -99,6 +102,7 @@ public class FilesController : ControllerBase
             return NotFound();
         }
         
+        // Remove record allowed here as _files is readonly.
         _files.Remove(record);
         return NoContent();
     }
